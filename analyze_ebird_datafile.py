@@ -95,10 +95,10 @@ def main():
         summary = analyze_csv(args.csv_file)
     except FileNotFoundError:
         print(f"Error: no se encontró el archivo: {args.csv_file}", file=sys.stderr)
-        raise SystemExit(2)
+        sys.exit(2)
     except (OSError, csv.Error) as exc:
         print(f"Error al leer el archivo CSV: {exc}", file=sys.stderr)
-        raise SystemExit(2)
+        sys.exit(2)
 
     print(format_summary(summary))
 
