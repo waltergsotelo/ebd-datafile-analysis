@@ -56,6 +56,10 @@ class AnalyzeEbirdDatafileTests(unittest.TestCase):
         self.assertEqual(summary["known_individuals"], 3)
         self.assertEqual(summary["unknown_count_rows"], 1)
         self.assertEqual(summary["checklists"], 0)
+        self.assertEqual(
+            summary["top_species"],
+            [("Gorrión común", 1), ("Garza blanca", 1)],
+        )
 
 
 if __name__ == "__main__":
