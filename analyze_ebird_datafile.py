@@ -51,7 +51,7 @@ def analyze_rows(rows):
         "unique_species": len(species_counter),
         "known_individuals": known_individuals,
         "unknown_count_rows": unknown_count_rows,
-        "checklists": len(checklist_ids) if checklist_ids else None,
+        "checklists": len(checklist_ids),
         "top_species": species_counter.most_common(10),
     }
 
@@ -72,10 +72,7 @@ def format_summary(summary):
         f"- Registros con conteo no numérico: {summary['unknown_count_rows']}",
     ]
 
-    if summary["checklists"] is None:
-        lines.append("- Listas (Submission ID/Checklist ID): no disponible")
-    else:
-        lines.append(f"- Listas (Submission ID/Checklist ID): {summary['checklists']}")
+    lines.append(f"- Listas (Submission ID/Checklist ID): {summary['checklists']}")
 
     lines.append("- Top especies más reportadas:")
     if not summary["top_species"]:
