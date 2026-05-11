@@ -1,0 +1,8 @@
+[Diagram]
+Title=Default title
+Database=C:\Users\usuario\Downloads\ebd-datafile-SAMPLE\ebd_US-AL-125_202503_202503_smp_relMar-2025.txt
+
+[Dataset]
+MLClassGenerator=TMLGenDataset
+successors=0
+

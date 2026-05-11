@@ -1,0 +1,30 @@
+# Entorno virtual
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Distribución / build
+dist/
+build/
+*.egg-info/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de datos locales grandes (opcional — comentar para incluirlos)
+# *.txt
