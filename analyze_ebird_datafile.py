@@ -100,7 +100,7 @@ def main():
         sys.exit(2)
     except (OSError, csv.Error) as exc:
         print(f"Error al leer el archivo CSV: {exc}", file=sys.stderr)
-        sys.exit(2)
+        sys.exit(1)
 
     print(format_summary(summary))
 

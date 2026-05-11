@@ -14,6 +14,8 @@ class AnalyzeEbirdDatafileTests(unittest.TestCase):
     def test_first_non_empty(self):
         row = {"A": " ", "B": "valor", "C": "otro"}
         self.assertEqual(first_non_empty(row, ["A", "B", "C"]), "valor")
+        row_with_spaces = {"A": "  valor con espacios  "}
+        self.assertEqual(first_non_empty(row_with_spaces, ["A"]), "valor con espacios")
         self.assertEqual(first_non_empty(row, ["X", "Y"]), "")
 
     def test_analyze_rows_summary(self):
@@ -33,13 +35,18 @@ class AnalyzeEbirdDatafileTests(unittest.TestCase):
                 "Count": "2",
                 "Submission ID": "S2",
             },
+            {
+                "Common Name": "",
+                "Count": "1",
+                "Submission ID": "S3",
+            },
         ]
         summary = analyze_rows(rows)
-        self.assertEqual(summary["observations"], 3)
+        self.assertEqual(summary["observations"], 4)
         self.assertEqual(summary["unique_species"], 2)
-        self.assertEqual(summary["known_individuals"], 7)
+        self.assertEqual(summary["known_individuals"], 8)
         self.assertEqual(summary["unknown_count_rows"], 1)
-        self.assertEqual(summary["checklists"], 2)
+        self.assertEqual(summary["checklists"], 3)
         self.assertEqual(
             summary["top_species"],
             [("House Sparrow", 2), ("Great Egret", 1)],
