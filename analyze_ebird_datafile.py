@@ -37,9 +37,9 @@ def analyze_rows(rows):
         if species:
             species_counter[species] += 1
 
-        checklist = first_non_empty(row, ["Submission ID", "Checklist ID"])
-        if not checklist:
-            checklist = first_non_empty(row, ["ID de envío", "ID de lista"])
+        checklist = first_non_empty(
+            row, ["Submission ID", "Checklist ID", "ID de envío", "ID de lista"]
+        )
         if checklist:
             checklist_ids.add(checklist)
 
