@@ -5,7 +5,7 @@ Herramienta mínima para analizar archivos CSV exportados desde eBird.
 ## Uso
 
 ```bash
-python /home/runner/work/ebd-datafile-analysis/ebd-datafile-analysis/analyze_ebird_datafile.py /ruta/al/archivo.csv
+python analyze_ebird_datafile.py /ruta/al/archivo.csv
 ```
 
 ## Salida
