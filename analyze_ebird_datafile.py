@@ -1,5 +1,6 @@
 import argparse
 import csv
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -90,7 +91,15 @@ def main():
     parser.add_argument("csv_file", type=Path, help="Ruta al archivo CSV de eBird")
     args = parser.parse_args()
 
-    summary = analyze_csv(args.csv_file)
+    try:
+        summary = analyze_csv(args.csv_file)
+    except FileNotFoundError:
+        print(f"Error: no se encontró el archivo: {args.csv_file}", file=sys.stderr)
+        raise SystemExit(2)
+    except (OSError, csv.Error) as exc:
+        print(f"Error al leer el archivo CSV: {exc}", file=sys.stderr)
+        raise SystemExit(2)
+
     print(format_summary(summary))
 
 
