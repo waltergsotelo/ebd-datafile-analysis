@@ -47,15 +47,15 @@ class AnalyzeEbirdDatafileTests(unittest.TestCase):
 
     def test_analyze_rows_with_spanish_headers(self):
         rows = [
-            {"Nombre común": "Gorrión común", "Conteo": "3"},
-            {"Nombre común": "Garza blanca", "Conteo": "X"},
+            {"Nombre común": "Gorrión común", "Conteo": "3", "ID de envío": "E1"},
+            {"Nombre común": "Garza blanca", "Conteo": "X", "ID de envío": "E2"},
         ]
         summary = analyze_rows(rows)
         self.assertEqual(summary["observations"], 2)
         self.assertEqual(summary["unique_species"], 2)
         self.assertEqual(summary["known_individuals"], 3)
         self.assertEqual(summary["unknown_count_rows"], 1)
-        self.assertEqual(summary["checklists"], 0)
+        self.assertEqual(summary["checklists"], 2)
         self.assertEqual(
             summary["top_species"],
             [("Gorrión común", 1), ("Garza blanca", 1)],
